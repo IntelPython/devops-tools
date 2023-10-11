@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2023 Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - uses: pre-commit/action@v2.0.0

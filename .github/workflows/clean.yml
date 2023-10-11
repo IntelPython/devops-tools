@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2023 Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Clean up anaconda repository
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  cleanup_packages:
+    name: Clean up anaconda packages
+    strategy:
+      fail-fast: false
+      matrix:
+        repository: [
+          "dppy/dpctl",
+          "dppy/dpnp",
+          "dppy/numba-dpex",
+          "dppy/numba-mlir",
+          "dppy/dpbench",
+          "dppy/dpcpp-llvm-spirv",
+        ]
+    runs-on: 'ubuntu-latest'
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          run-post: false
+          channel-priority: "disabled"
+          channels: conda-forge
+          python-version: "3.11"
+
+      - name: Install anaconda-client
+        run: conda install anaconda-client
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cleanup old packages
+        run: |
+          python scripts/cleanup-old-packages.py \
+          --verbose --force --token ${{ secrets.ANACONDA_TOKEN }} \
+          --package ${{matrix.repository}} --label dev

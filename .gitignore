@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2023 Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+*.pyc
+*.o
+*.so
+*.dylib
+*.pyd
+*.pdb
+*.egg-info
+*.sw[po]
+*.out
+*.ll
+.nfs*
+
+.idea/
+.vscode/
