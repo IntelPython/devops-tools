@@ -4,6 +4,8 @@
 
 name: pre-commit
 
+permissions: read-all
+
 on:
   pull_request:
   push:
