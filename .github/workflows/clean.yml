@@ -4,6 +4,8 @@
 
 name: Clean up anaconda repository
 
+permissions: read-all
+
 on:
   schedule:
     - cron: "0 0 * * *"
