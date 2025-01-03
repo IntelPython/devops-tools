@@ -18,7 +18,7 @@ except ImportError:
 
 QUOTAS = {
     # lets try keeping at least 1Gb free. Total quota is 3Gb
-    "dppy/dpctl": 512 * 1024 * 1024,
+    "dppy/dpctl": (512 + 128) * 1024 * 1024,
     "dppy/dpnp": (512 - 128) * 1024 * 1024,
     "dppy/numba-dpex": 256 * 1024 * 1024,
     "dppy/numba-mlir": 512 * 1024 * 1024,
