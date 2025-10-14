@@ -40,7 +40,7 @@ jobs:
         run: conda install anaconda-client
 
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
