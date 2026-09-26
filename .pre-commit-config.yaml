@@ -43,7 +43,7 @@ repos:
         # D417 does not work properly:
         # https://github.com/PyCQA/pydocstyle/issues/459
 -   repo: https://github.com/pycqa/flake8
-    rev: 7.3.0
+    rev: 7.4.1
     hooks:
     -   id: flake8
 -   repo: https://github.com/asottile/dead
